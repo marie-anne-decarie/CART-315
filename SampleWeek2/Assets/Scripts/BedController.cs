@@ -44,9 +44,7 @@ public class BedController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log(other.gameObject.name);
-        if (other.gameObject.name == "Sleepy")
-            score += 1;
-        else score -= 1;
+        if (other.gameObject.name == "sleepy") score += 1;
 
         Destroy(other.gameObject);
     }

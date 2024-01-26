@@ -24,7 +24,6 @@ public class Sleepy : MonoBehaviour
         float x = Random.Range(-8f, 8f);
         Instantiate(sleepy, new Vector3(x, 6, 0), Quaternion.identity);
 
-
         yield return new WaitForSeconds(1.5f);
         StartCoroutine(SleepySpawn());
 
