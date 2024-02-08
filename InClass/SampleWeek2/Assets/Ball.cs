@@ -3,17 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 public class Ball : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float ballSpeed;
     public float maxSpeed = 10f;
-    public float minSpeed = 5f;
+    public float minSpeed = 2f;
 
     public AudioSource scoreSound, blip;
 
     public int leftPlayerScore, rightPlayerScore;
+    public Text leftScore, rightScore;
+    public Text victory;
 
     private int[] dirOptions = { -1, 1 };
     private int hDir, vDir;
@@ -31,6 +34,8 @@ public class Ball : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        GetComponent<TrailRenderer>().enabled = true;
+
         // figure out the directions :3
         hDir = dirOptions[Random.Range(0, dirOptions.Length)];
         vDir = dirOptions[Random.Range(0, dirOptions.Length)];
@@ -44,6 +49,13 @@ public class Ball : MonoBehaviour
 
     private void Reset()
     {
+        GetComponent<TrailRenderer>().enabled = false;
+
+        if (leftPlayerScore == 10)
+            victory.text = "Left player wins";
+        else if (rightPlayerScore == 10)
+            victory.text = "right player wins";
+
         rb.velocity = Vector2.zero;
         ballSpeed = 2;
         transform.position = new Vector2(0, 3);
@@ -56,16 +68,16 @@ public class Ball : MonoBehaviour
         // did we hit a wall?
         if(other.gameObject.tag == "Wall")
         {
-            blip.pitch = 0.75f;
-            blip.Play();
+            //blip.pitch = 0.75f;
+            //blip.Play();
             SpeedCheck();
         }
 
         // did we hit a paddle?
         if (other.gameObject.tag == "Paddle")
         {
-            blip.pitch = 1f;
-            blip.Play();
+            //blip.pitch = 1f;
+            //blip.Play();
             SpeedCheck();
         }
 
@@ -73,6 +85,7 @@ public class Ball : MonoBehaviour
         if(other.gameObject.name == "leftWall")
         {
             rightPlayerScore += 1;
+            rightScore.text = rightPlayerScore.ToString();
             Reset();
         }
 
@@ -80,6 +93,7 @@ public class Ball : MonoBehaviour
         if(other.gameObject.name == "rightWall")
         {
             leftPlayerScore += 1;
+            leftScore.text=leftPlayerScore.ToString();
             Reset();
         }
 
