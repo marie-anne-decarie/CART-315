@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Boid : MonoBehaviour
 {
+    private Neighbourhood neighbourhood;
+    
     private Rigidbody rigid;
 
     // using this for initialization
      void Awake()
     {
+        neighbourhood = GetComponent<Neighbourhood>();
         rigid = GetComponent<Rigidbody>();
 
         // Setting a random initial velocity
@@ -43,6 +46,40 @@ public class Boid : MonoBehaviour
         {
             sumVel -= delta.normalized * bSet.attractPush;
         }
+
+        // _____COLLISION AVOIDANCE_______ Avoiding neighbours that are too near
+        Vector3 velAvoid = Vector3.zero;
+        Vector3 tooNearPos = neighbourhood.avgNearPos;
+        // if the response is vector3.zero, then no need to react
+        if(tooNearPos!=Vector3.zero)
+        {
+            velAvoid = pos - tooNearPos;
+            velAvoid.Normalize();
+            sumVel += velAvoid * bSet.nearAvoid;
+        }
+
+        // _____VELOCITY MATCHING______ trying to match velocity w neighbours
+        Vector3 velAlign = neighbourhood.avgVel;
+        // only do more if the velAlign is not vector3.zero
+        if(velAlign!=Vector3.zero)
+        {
+            velAlign.Normalize();
+            sumVel += velAlign * bSet.velMatching;
+        }
+
+        // _____FLOCK CENTERING______ moving towards the center of local neighbours
+        Vector3 velCenter = neighbourhood.avgPos;
+        if(velCenter!=Vector3.zero)
+        {
+            velCenter -= transform.position;
+            velCenter.Normalize();
+            sumVel += velCenter * bSet.flockCentering;
+        }
+
+        // ______INTERPOLATE VELOCITY_____ between normalizeVel and sumVel
+        sumVel.Normalize();
+        vel = Vector3.Lerp(vel.normalized, sumVel, bSet.velocityEasing);
+        vel *= bSet.velocity;
 
         //_____INTERPOLATE VELOCITY_____
         sumVel.Normalize();
