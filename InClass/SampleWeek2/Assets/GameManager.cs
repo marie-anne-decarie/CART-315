@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         lives = 4;
-        livesLeft.text = "<3: " + lives.ToString();
+        livesLeft.text = lives.ToString();
     }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     public void LoseLife()
     {
         lives -= 1;
-        livesLeft.text = "<3: " + lives.ToString();
+        livesLeft.text = lives.ToString();
     }
 
     public void AddPoints(int numPoints)
