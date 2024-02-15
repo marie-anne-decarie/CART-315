@@ -35,6 +35,7 @@ public class Ball : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         GetComponent<TrailRenderer>().enabled = true;
+       
 
         // figure out the directions :3
         hDir = dirOptions[Random.Range(0, dirOptions.Length)];

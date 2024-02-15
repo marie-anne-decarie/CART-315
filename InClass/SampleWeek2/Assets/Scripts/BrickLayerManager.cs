@@ -21,10 +21,11 @@ public class BrickLayerManager : MonoBehaviour
         for (int i = 0; i < columns; i++)
             for (int j = 0; j < rows; j++)
             {
-                float xPos = -columns + (i * brickSpacing_h);
+                float xPos = -columns-1 + (i * brickSpacing_h);
                 float yPos = rows - (j * brickSpacing_v);
                 Instantiate(brick, new Vector3(xPos, yPos, 0), Quaternion.identity);
                 r.sharedMaterial.color = rand;
+
             }
     }
 
