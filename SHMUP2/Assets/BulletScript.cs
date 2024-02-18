@@ -19,4 +19,17 @@ public class BulletScript : MonoBehaviour
         yPos += speed;
         this.transform.position = new Vector2(this.transform.position.x, yPos);
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(other.gameObject);
+            Destroy(this.gameObject);
+        }
+        
+
+        if (other.gameObject.tag == "Wall")
+            Destroy(this.gameObject);
+    }
 }
