@@ -11,31 +11,32 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject Bullet;
     public GameObject specialBullet;
-
-    public Sprite special;
+    public GameObject defaultAvatar, specialAvatar;
 
     public KeyCode shoot;
 
-    private int changeCount=0;
+    public float force;
+
+    private int whichAvatarIsOn = 1;
     
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+        defaultAvatar.gameObject.SetActive(true);
+        specialAvatar.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Z))
+        // Switching between default pink sprite and special yellow sprite
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = special;
-            changeCount++;
+            SwitchAvatar();
 
         }
-        
 
+        // Move left and right
         if (Input.GetKey(leftKey))
         {
             if(xPos>leftWall)
@@ -50,23 +51,45 @@ public class PlayerScript : MonoBehaviour
 
         transform.position = new Vector3(xPos, transform.position.y, 0);
 
-
-        if (Input.GetKeyDown(shoot) && (changeCount / 2 == 0))
-            Shoot();
-        else if (Input.GetKeyDown(shoot))
-            SpecialShoot();
     }
 
-    void Shoot()
+    void SwitchAvatar()
     {
-        Instantiate(Bullet, this.transform.position, Quaternion.identity); 
+        Debug.Log("You switched the character");
+
+        switch(whichAvatarIsOn)
+        {
+            case 1:
+                // specialAvatar (2) is now on
+                whichAvatarIsOn = 2;
+                // activate specialAvatar
+                defaultAvatar.gameObject.SetActive(false);
+                specialAvatar.gameObject.SetActive(true);
+
+                break;
+            case 2:
+                // defaultAvatar (1) is now on
+                whichAvatarIsOn = 1;
+                defaultAvatar.gameObject.SetActive(true);
+                specialAvatar.gameObject.SetActive(false);
+                break;
+
+        }
+
+  
 
     }
 
+    
     void SpecialShoot()
-    {
-
+    {     
         Instantiate(specialBullet, this.transform.position, Quaternion.identity);
+        Rigidbody2D rig;
+        rig = specialBullet.GetComponent<Rigidbody2D>();
+        rig.AddForce(transform.up * force);
+        Debug.Log(transform.up);
+       
     }
+
 
 }

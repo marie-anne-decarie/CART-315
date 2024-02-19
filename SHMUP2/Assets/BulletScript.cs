@@ -26,6 +26,7 @@ public class BulletScript : MonoBehaviour
         {
             Destroy(other.gameObject);
             Destroy(this.gameObject);
+            ScoreScript.score += 5;
         }
         
 
