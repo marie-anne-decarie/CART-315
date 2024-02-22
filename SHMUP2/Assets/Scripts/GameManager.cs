@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,5 +26,18 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha0))
             SceneManager.LoadScene("GameOver");
+
+        if(Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            SceneManager.LoadScene("Level 2");
+            
+        }
+
     }
+
+
+
+
+   
+   
 }

@@ -9,25 +9,24 @@ public class ShooterScript : MonoBehaviour
 {
     public GameObject Bullet;
     public float bulletSpeed;
-    public KeyCode shoot;
-
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public KeyCode shoot;    
 
     // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(shoot))
         {
-            Instantiate(Bullet, this.transform.position, Quaternion.identity);
+            Shoot();
         }
 
 
     }
+
+    void Shoot()
+    {
+        Instantiate(Bullet, this.transform.position, Quaternion.identity);
+  
+    }
+
 
 }

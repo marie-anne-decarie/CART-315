@@ -30,9 +30,18 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         // Switching between default pink sprite and special yellow sprite
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) && ScoreScript.deservePowerUp)
         {
-            SwitchAvatar();
+            defaultAvatar.gameObject.SetActive(false);
+            specialAvatar.gameObject.SetActive(true);
+
+        }
+
+        if(specialShooter.shot>=3)
+        {
+            defaultAvatar.gameObject.SetActive(true);
+            specialAvatar.gameObject.SetActive(false);
+            specialShooter.shot = 0;
 
         }
 
@@ -53,7 +62,7 @@ public class PlayerScript : MonoBehaviour
 
     }
 
-    void SwitchAvatar()
+    void SwitchAvatar() // (Currently unused) :'(
     {
         Debug.Log("You switched the character");
 
@@ -65,7 +74,6 @@ public class PlayerScript : MonoBehaviour
                 // activate specialAvatar
                 defaultAvatar.gameObject.SetActive(false);
                 specialAvatar.gameObject.SetActive(true);
-
                 break;
             case 2:
                 // defaultAvatar (1) is now on
@@ -76,20 +84,11 @@ public class PlayerScript : MonoBehaviour
 
         }
 
+
   
 
     }
 
-    
-    void SpecialShoot()
-    {     
-        Instantiate(specialBullet, this.transform.position, Quaternion.identity);
-        Rigidbody2D rig;
-        rig = specialBullet.GetComponent<Rigidbody2D>();
-        rig.AddForce(transform.up * force);
-        Debug.Log(transform.up);
-       
-    }
 
 
 }

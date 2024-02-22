@@ -15,15 +15,15 @@ public class EnemyMovement : MonoBehaviour
         pointB = new Vector3(transform.position.x + 2, transform.position.y, 0);
         while (true)
         {
-            yield return StartCoroutine(MoveObject(transform, pointA, pointB, 3.0f));
-            yield return StartCoroutine(MoveObject(transform, pointB, pointA, 3.0f));
+            yield return StartCoroutine(MoveObject(transform, pointA, pointB, 0.5f));
+            yield return StartCoroutine(MoveObject(transform, pointB, pointA, 0.5f));
         }
     }
 
     IEnumerator MoveObject(Transform thisTransform, Vector3 startPos, Vector3 endPos, float time)
     {
-        var i = 0.0f;
-        var rate = 1.0f / time;
+        float i = 0.0f;
+        float rate = 1.0f / time;
         while (i < 1.0f)
         {
             i += Time.deltaTime * rate;
