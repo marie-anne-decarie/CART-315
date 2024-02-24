@@ -5,27 +5,24 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour   
 {
     public GameObject enemy;
-    public int enemyRow, enemyColumn;
-    public float enemyHSpacing, enemyVSpacing;
-    public float offsetH, offsetV;
+    public int startPoint;
+
+    public float resetTime = 1f;
+    public float timer = 1f;
 
 
-  void Start()
-  {
-     for(int i=0; i<enemyRow; i++)
+    private void Update()
+    {
+        timer -= 1 * Time.deltaTime;
+        if(timer<=0)
         {
-            for(int j=0; j<enemyColumn; j++)
-            {
-                float xPos = offsetH + (i * enemyHSpacing);
-                float yPos = offsetV + (j * enemyVSpacing);
-                Instantiate(enemy, new Vector3(xPos, yPos, 0), Quaternion.identity);
+            Instantiate(enemy, new Vector3(Random.Range(-7,7), startPoint, 0), Quaternion.identity);
+            timer = resetTime;
 
-            }
-            
-            
         }
-        
-  }
+    }
+
+
 
 
 

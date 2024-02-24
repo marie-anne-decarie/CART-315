@@ -34,7 +34,8 @@ public class SpecialBullet : MonoBehaviour
             collisionCounter++;
             ScoreScript.score += 10;
             ScoreScript.targetHits++;
-            if(collisionCounter>=4)
+            Debug.Log(ScoreScript.targetHits);
+            if (collisionCounter>=4)
             {
                 Destroy(this.gameObject);
             }

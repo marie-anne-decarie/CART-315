@@ -28,6 +28,7 @@ public class BulletScript : MonoBehaviour
             Destroy(this.gameObject);
             ScoreScript.score += 5;
             ScoreScript.targetHits++;
+            Debug.Log(ScoreScript.targetHits);
         }
         
 

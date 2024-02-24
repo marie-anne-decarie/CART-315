@@ -24,14 +24,31 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-            SceneManager.LoadScene("GameOver");
-
-        if(Input.GetKeyDown(KeyCode.Alpha9))
+        
+        if(ScoreScript.targetHits==30)
         {
-            SceneManager.LoadScene("Level 2");
+            ScoreScript.targetHits = 31;
+            SceneManager.LoadScene("Level2");
             
         }
+
+        if (ScoreScript.targetHits == 61)
+        {
+            ScoreScript.targetHits = 60;
+            SceneManager.LoadScene("GameOver");
+
+        }
+
+        if(ScoreScript.lives<0)
+        {
+            ScoreScript.lives = 3;
+            SceneManager.LoadScene("Dead");
+        }
+
+        
+
+
+
 
     }
 

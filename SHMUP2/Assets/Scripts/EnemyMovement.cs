@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour
     {
     
         Vector3 pointA = transform.position;
-        pointB = new Vector3(transform.position.x + 2, transform.position.y, 0);
+        pointB = new Vector3(transform.position.x, transform.position.y, 0);
         while (true)
         {
             yield return StartCoroutine(MoveObject(transform, pointA, pointB, 0.5f));

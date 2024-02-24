@@ -5,34 +5,45 @@ using UnityEngine;
 public class EnemyMove2 : MonoBehaviour
 {
 
+    public float enemySpeed;
+    public float xPos, yPos;
+    public float timer = 10.5f;
 
-    public Vector3 pointB, pointC, pointD;
 
-    IEnumerator Start()
+    void Start()
     {
-    
-        Vector3 pointA = transform.position;
-        pointB = new Vector3(transform.position.x + 2, transform.position.y, 0);
-        pointC = new Vector3(transform.position.x, transform.position.y - 2, 0);
-        pointD = new Vector3(transform.position.x - 2, transform.position.y, 0);
-        while (true)
-        {
-            yield return StartCoroutine(MoveObject(transform, pointA, pointB, 0.25f));
-            yield return StartCoroutine(MoveObject(transform, pointB, pointC, 0.25f));
-            yield return StartCoroutine(MoveObject(transform, pointC, pointD, 0.25f));
-            yield return StartCoroutine(MoveObject(transform, pointD, pointA, 0.25f));
-        }
+        xPos = this.transform.position.x;
+        yPos = this.transform.position.y;
     }
 
-    IEnumerator MoveObject(Transform thisTransform, Vector3 startPos, Vector3 endPos, float time)
+    private void Update()
     {
-        float i = 0.0f;
-        float rate = 1.0f / time;
-        while (i < 1.0f)
+        timer -= 1*Time.deltaTime;
+        xPos += enemySpeed;
+        yPos -= enemySpeed;
+        if(timer<=0)
         {
-            i += Time.deltaTime * rate;
-            thisTransform.position = Vector3.Lerp(startPos, endPos, i);
-            yield return null;
+            xPos -= enemySpeed;
+            timer = 1f;
         }
+        this.transform.position = new Vector3(xPos, yPos, 0);
+
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.name == "BotWall")
+            Destroy(this.gameObject);
+
+        if (other.gameObject.tag == "Player")
+        {
+            ScoreScript.lives -= 1;
+            Destroy(this.gameObject);
+        }
+        
+
+
+    }
+
+
 }
