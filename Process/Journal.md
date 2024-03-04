@@ -1,3 +1,11 @@
+**March 4th**
+<br><br> I've been thinking a bit more about the words fighting game. I think it could be really fun, even though I'm not entirely sure about the rules and gameplay.
+<br> I realized I forgot to write actual design values like we discussed last week so here goes:
+- Experience/emotion: This game has to be funny for the player(s). The game should be fast-paced enough to force the player to choose his words quickly and come up with something a little absurd, without too much overthinking. The game should also be just a tasteful amount of offensive (it is a fighting game, it needs a bit of violence, verbal in this case)
+- Aesthetic: The way the game looks has to add to the comedy. I envision comical animations when the avatar attacks or receives an attack. I like the idea of the characters literally throwing physical words or speech bubbles at each other (it reminds me a little of something they do in the animated show Tuca and Bertie, where a character will say something and literal letters will come out of their mouth and interact with the environment). The color palette should also be bright and eye-catching, as far from boring as possible!
+
+<br><br> Problem statement: How can I make the concept of cards against humanity into a 1v1 street-fighter-type game?
+
 # Reading week (6.5? 7?) - Ideation process
 
 **February 29** <br>
