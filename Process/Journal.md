@@ -2,8 +2,8 @@
 
 *IT ALREADY EXISTS*
 <br><br> I just showed my (very rough) prototype to my friend, and she goes "girl...that's already a thing..."
-<br> I feel so dumb for not thinking of looking it up earlier!:(
-![oh sir](https://github.com/marie-anne-decarie/CART-315/assets/157767089/0f6bbfce-5533-40e2-937e-4e19ec9ae6ac)
+<br> I feel so dumb for not thinking of looking it up earlier!:( <br>
+![oh sir](https://github.com/marie-anne-decarie/CART-315/assets/157767089/0f6bbfce-5533-40e2-937e-4e19ec9ae6ac) <br>
 Honestly these past two weeks have been a mess. It took me so much time to find an idea I liked and I really overestimated my programming skills, despite my very limited experience. I think going forward, I will have to either make something more simple or join a team so that I can share the workload and divide tasks with other people.
 <br> Hopefully I can catch up and make something I'm happy with next time:')
 
