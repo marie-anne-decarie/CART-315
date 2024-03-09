@@ -1,4 +1,20 @@
+# March 9th - Reflecting on this week's playtest
 
+The playtest in class went pretty well! I didn't have a lot of time to actually test my game, but I showed the concept art and the paper prototype to other people and they said they liked the idea a lot. They already gave some suggestions to improve it, like make the words more unexpected and random as opposed to regular swear words/insult (which I totally agree with, I think the initial word bank I came up with ended up being way too distasteful).
+<br> I talked a bit about the turns mechanic as well. In my mind, both player would craft their attack at the same time from a shared words bank in a limited time, but someone proposed alternate turns instead, with a strict time limit. Each round, one player could attack first and the second gets a chance to defend themselves, or both pick a word each their turn until both attacks are ready. 
+<br> One thing I was worried about is the fact that this game concept already exists. I talked about it with others and they didn't think it was a big deal, since knowing it already existed now, I could just get inspired from it and also make sure that mine was different enough to stand out. This reassured me and I will carry on with this project despite my initial concerns.
+<br> For now, the first thing I want to do is improve the paper prototype (since the one I did was extremely minimal) and test it for a bit longer with my friends, since as I mentioned, we ran out of time in class to really test it well. After that, I'll try to start coding. I already tried making a Unity prototype last week, but it didn't go well at all and I didn't even show it in class. I think I definitely tried to go too fast. All I managed to do was shuffle the words from the bank and display a few of them in the right slots on screen. I think I can build up on this and make something really simple just to showcase how this game will be played.
+<br> Going forward, the questions I'll try to answer are:
+- What are the specific rules of this game (turns, points, how to win, etc.)?
+- How can I make the wordbank funnier to more people and less reliant on offensive language?
+- How to make a basic version of it in Unity without overcomplicating things?
+
+<br><br> Here's what I had to show in class: <br>
+![wordsFightWordArt](https://github.com/marie-anne-decarie/CART-315/assets/157767089/8b28be13-f6e7-4299-b58c-e6c49df5f552)<br>
+![UISketch](https://github.com/marie-anne-decarie/CART-315/assets/157767089/50a6795f-8637-4827-8dd1-cc3aeac28c5b)<br>
+![TitleArt](https://github.com/marie-anne-decarie/CART-315/assets/157767089/f21b09ca-c093-43d0-8c5c-38b4051ac37b)<br>
+
+<br> That's it for now!
 
 # March 7th
 
@@ -6,8 +22,7 @@
 <br><br> I just showed my (very rough) prototype to my friend, and she goes "girl...that's already a thing..."
 <br> I should have looked it up!:( <br>
 ![oh sir](https://github.com/marie-anne-decarie/CART-315/assets/157767089/0f6bbfce-5533-40e2-937e-4e19ec9ae6ac) <br>
-Honestly these past two weeks have been a mess. It took me so much time to find an idea I liked and I really overestimated my programming skills, despite my very limited experience. I think going forward, I will have to either make something more simple or join a team so that I can share the workload and divide tasks with other people.
-<br> Hopefully I can catch up and make something I'm happy with next time:')
+Honestly these past two weeks have been a little rough. I tried to do too much and too fast. I wanted to get ahead and have a Unity prototype to show in class, but I really overestimated my coding skills and I wasn't able to do much except shuffle the words and show them on screen. At least I have some paper material, but again, the "the idea already exists now" thing really worries me. We'll see what happens when I show it in class!
 
 # March 4th
 <br><br> I've been thinking a bit more about the words fighting game. I think it could be really fun, even though I'm not entirely sure about the rules and gameplay.
