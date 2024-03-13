@@ -22,6 +22,7 @@ public class Word : MonoBehaviour
 
     void OnMouseDown()
     {
+        this.gameObject.SetActive(false);
         for(int i=0; i<slotAvailable.Length; i++)
         {
             if(slotAvailable[i]==true)

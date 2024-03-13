@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8883132567145106828}
   - component: {fileID: 3151392760894784667}
-  - component: {fileID: 3027797075727570634}
   - component: {fileID: -6366715955181660008}
+  - component: {fileID: -3173447766636865116}
   m_Layer: 0
   m_Name: Word
   m_TagString: Untagged
@@ -84,20 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3027797075727570634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8094037977510634789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30a0484f2400ab945a5641b92c4314cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slots: []
-  slotAvailable: 010101
 --- !u!61 &-6366715955181660008
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -124,3 +110,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.501159, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-3173447766636865116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8094037977510634789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a0484f2400ab945a5641b92c4314cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  slotAvailable: 
