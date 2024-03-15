@@ -10,6 +10,8 @@ public class GameManager2 : MonoBehaviour
     public bool[] availableWordSlots;
 
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,14 +30,20 @@ public class GameManager2 : MonoBehaviour
     public void DisplayWords()
     {
         if(wordBank.Count>=1)
-        {
-            foreach(Transform t in wordSlots)
-            {           
-                GameObject randWord = wordBank[Random.Range(0, wordBank.Count)];               
-                randWord.gameObject.SetActive(true);
-                randWord.transform.position = t.position;          
-                wordBank.Remove(randWord);                                         
-            }
+        {         
+                for(int i =0; i<availableWordSlots.Length; i++)
+                {
+                if(availableWordSlots[i])
+                    {
+                    GameObject randWord = wordBank[Random.Range(0, wordBank.Count)];               
+                    randWord.gameObject.SetActive(true);
+                    randWord.transform.position = wordSlots[i].transform.position;        
+                    wordBank.Remove(randWord);  
+                    }
+
+                }
+                                       
+            
 
         }
         

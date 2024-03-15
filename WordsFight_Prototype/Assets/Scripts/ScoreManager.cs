@@ -3,21 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpeechBubble : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
-   
+    public Text scoreText;
+    public int score;
+    public int wordValue;
     
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.SetActive(true);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-      
+        
     }
 
+    public void AddPoints()
+    {
 
+    }
 }
