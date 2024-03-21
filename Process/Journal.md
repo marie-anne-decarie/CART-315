@@ -1,3 +1,21 @@
+# Week 9 - Prototyping
+
+This week, the first thing I did was improve my paper prototype. As I mentioned, I didn't like the word bank I had and I also wanted to make it bigger. So, I went on the internet and searched for funny or unusual english words and managed to gather a pretty large bank of 50-ish nouns + 50-ish adjectives. It was a fun process and I'm much happier with the words I have now.<br>
+![431295675_272001272620302_8570431211418355420_n](https://github.com/marie-anne-decarie/CART-315/assets/157767089/6e678a92-974e-442e-a410-0b082f316fce)
+
+<br> Then, I wanted to tackle coding. I started over with a new scene because my first attempt at a prototype from last week was not working at all. It still feels pretty incomplete, but with my level of skill I'm pretty satisfied with what I managed to achieve. Here's what you can do so far in my game:
+- Get a random selection of nouns and adjectives
+- Click on the nouns and adjectives to craft an insult. The words you click on are displayed on the screen
+- When you click on the words, points are displayed on the screen
+- There is an "attack" button that launches the attack, i.e. removes the words from the screen and calculate the final score. So far, there is no turns mechanic, so you can't actually attack another player.
+
+<br> For this to feel really complete, I would have wanted to add a time limit for the attack as well as a turns mechanic so that two players can craft insults one after the other. For now, all I managed to do was have a button to reload the screen and thus allow for a new turn to start.
+<br> For the specific rules, unfortunately, I still did not have the occasion to test this with actual people. I was really focused on the actual coding aspect (which always takes me the longest) and didn't invite other people to try the rules I had thought, so they might still need some tweaking. 
+
+<br> For now, here are the notes I took this week in my notebook: <br>
+![431164937_743605360874713_1674959852223639574_n](https://github.com/marie-anne-decarie/CART-315/assets/157767089/b4fc973a-ea7f-49c6-86d8-d4c2dedabc30)
+![432830612_883991330404367_8537851732378745853_n](https://github.com/marie-anne-decarie/CART-315/assets/157767089/d05e407c-d631-438a-82e0-62d66da1e835)
+
 # March 9th - Reflecting on this week's playtest
 
 The playtest in class went pretty well! I didn't have a lot of time to actually test my game, but I showed the concept art and the paper prototype to other people and they said they liked the idea a lot. They already gave some suggestions to improve it, like make the words more unexpected and random as opposed to regular swear words/insult (which I totally agree with, I think the initial word bank I came up with ended up being way too reliant on those).
