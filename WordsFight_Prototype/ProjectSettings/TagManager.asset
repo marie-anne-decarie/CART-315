@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - word
+  - GreenButton
+  - PurpleButton
   layers:
   - Default
   - TransparentFX
