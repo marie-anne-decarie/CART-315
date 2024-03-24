@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WordButton : MonoBehaviour
+public class ButtonScript : MonoBehaviour
 {
     public Text speechBubble;
-    public string thisWord;
-    public int wordValue;
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        speechBubble.text = null;
-
+        speechBubble.text = "You"; 
     }
 
     // Update is called once per frame
@@ -24,9 +21,12 @@ public class WordButton : MonoBehaviour
 
     public void AddWord()
     {
+        string thisWord = this.gameObject.GetComponentInChildren<Text>().text;
         speechBubble.text += (" " + thisWord);
-        //Debug.Log("The bubble says" + speechBubble.text);
     }
 
-   
+    public void MysteryWord()
+    {
+
+    }
 }

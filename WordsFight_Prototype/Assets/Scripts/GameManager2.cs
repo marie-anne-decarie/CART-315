@@ -11,7 +11,7 @@ public class GameManager2 : MonoBehaviour
     public bool[] availableWordSlots;
 
     public float timePassed = 0f;
-    bool playerOneTurn = true;
+    //bool playerOneTurn = true;
     private int playerTurn;
 
 
@@ -24,12 +24,6 @@ public class GameManager2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            ClearWords();
-        }
         if (Input.GetKeyDown(KeyCode.Z))
         {
             SceneManager.LoadScene("Tests");
