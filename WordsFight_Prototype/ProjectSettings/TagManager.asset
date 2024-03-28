@@ -7,6 +7,7 @@ TagManager:
   - word
   - GreenButton
   - PurpleButton
+  - SwearWord
   layers:
   - Default
   - TransparentFX
