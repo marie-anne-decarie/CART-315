@@ -1,3 +1,36 @@
+# Week 10 - Recap
+
+I worked a lot on my prototype this week and I am very satisfied with where everything is headed. My goal was to (at last) have a fully playable prototype that I could test with other people without having to be like "it's supposed to do that here" or "aah yeah I'm not done coding this part". 
+<br> Before I started, here are some of the suggestions that I got in class last thursday:
+- give a point value to some of the words so that there are common and rare ones which are worth more or less points
+- Limit either the time of attack or the amount of words permitted per attack
+- Maximize the wordbank by keeping the words in a text asset file and using it as a resource
+-  Play against the computer instead of against another player (use AI? Perhaps? Or else just make the reactions a little random)
+
+<br> I worked two separate times on my prototype over the week. The first time, I put the words into a resource file as suggested, which made everything 10000x more simple than what I had been trying to do so far (thanks Matt). I tried to organize the UI in a more visually pleasing way and added buttons for punctuation, additional swear words and a mysterious button (which I still haven't figured out what it does, but I know I will find something). I then added an opponent against which to play, and implemented a health bar as well as possible reactions for him. Then I also added a game over screen that allows you to play again once you defeated the opponent.
+<br> At the end of that work session, I made a list of the things to improve for next time:<br>
+
+![430937933_930975168778370_9111604240852797778_n](https://github.com/marie-anne-decarie/CART-315/assets/157767089/962a4c90-0fa4-43dc-bfc3-058117aae10f) <br>
+
+<br> At this point, I had two of my friends try the work in progress and they seemed to enjoy it!:3 One of them suggested that there could be a few different opponents, and that depending on which one you attack, the reactions as well as the health bar management could be different.
+
+<br> The second time I worked on my prototype, I went through my to-do list and fixed most of the things there. I implemented some "rules" that force you to respect a certain level of syntax, example you can't put an adjective after a noun and there's a maximum number of adjectives (so the insults aren't ridiculously long). I'd like to make it a bit more dynamic later on, such that the longer you play, the longer insults you're allowed to make, but I still need to figure that out.
+<br> I made the words momentarily disappear after each attack (to block the player from attacking too fast) and then reshuffle at each turn, so that it would be more interesting. I also tweaked the opponent's reaction such that there are specific reactions when you attack without saying anything or when you overuse the swear word option. I looked up some videos about AI and tried to see how realisticly I could make the opponent's reaction based on AI, but I didn't get very far so I'll keep thinking about it. For now the reactions are completely random, which I'd like to improve because the game gets a little boring when the reactions don't match the level of effort put into the attack.
+<br> Finally, I added a title screen with a play button as well as instructions. I thought that would be useful when playtesting because I wouldn't have to explain anything to the testers. I had my sister test that version of my game and she thought it was a very nice addition.
+
+<br> <br> I also remembered the questions I wrote a few weeks ago so here's where I am with them: <br>
+- What are the specific rules of this game (turns, points, how to win, etc.)? **I think that's pretty well established now! You play alone against the computer, you craft attacks from random selections of words and the opponent loses health based on how offended he was. You win when he has no health left! I guess I have to figure out a way to lose too...** 
+- How can I make the wordbank funnier to more people and less reliant on offensive language? **I think my current wordbank is really funny, and the people that tested my game confirmed it. Some of the words are really unusual and it makes some really absurd insults, plus I removed most of the offensive language because it made it too easy and not comedic at all**
+- How to make a basic version of it in Unity without overcomplicating things? **Again, I think I pretty much figured it out by now! Unity can't defeat me >:)**
+
+<br> <br> For this week, I want to focus less on code and more on art so my game looks nicer. I also want to test Unity's animation more in depth (even though I already tested it a little bit with my title screen). Here are the questions I'll try to answer:
+- How can I use animation to make the opponent feel more lively and reactive?
+- How do you *lose* this game? Can the opponent fight you back?
+- What does the mystery "???" button does?
+
+<br> And that's it for now!
+
+
 # Week 9 - Prototyping
 
 This week, the first thing I did was improve my paper prototype. As I mentioned, I didn't like the word bank I had and I also wanted to make it bigger. So, I went on the internet and searched for funny or unusual english words and managed to gather a pretty large bank of 50-ish nouns + 50-ish adjectives. It was a fun process and I'm much happier with the words I have now.<br>
