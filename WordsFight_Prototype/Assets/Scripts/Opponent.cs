@@ -13,6 +13,10 @@ public class Opponent : MonoBehaviour
     public NewWordScript nws;
  
     public Text reaction; // The opponent's reaction when you attack him
+
+    public Animator anim;
+
+    public GameObject opponentBubble;
     
     // Start is called before the first frame update
     void Start()
@@ -21,6 +25,7 @@ public class Opponent : MonoBehaviour
         hb.SetMaxHealth(maxHealth);
 
         reaction.text = null;
+        opponentBubble.SetActive(false);
     }
 
     // Update is called once per frame
@@ -32,6 +37,9 @@ public class Opponent : MonoBehaviour
                 currentHealth = 1;
                 SceneManager.LoadScene("GameOver");
             }
+
+
+
     }
 
     public void React() // function that triggers the opponent's reaction
@@ -48,16 +56,20 @@ public class Opponent : MonoBehaviour
         nws.turnsCount++;
         Debug.Log("You just finished round " + nws.turnsCount);
 
+        opponentBubble.SetActive(true);
+        
         // A random reaction is triggered
         int randReaction = Random.Range(1, 5);
         
         if(nws.totalWordCount==0)
         {
             reaction.text = "Did you say something?";
+            anim.SetInteger("Emote", 2);
         }
         else if(nws.swearCount>=3)
         {
             reaction.text = "Whoa there, watch your mouth!";
+            anim.SetInteger("Emote", 3);
         }
         else
         {        
@@ -66,12 +78,14 @@ public class Opponent : MonoBehaviour
                 case 1:
                     {
                         reaction.text = "You done talking?";
+                        anim.SetInteger("Emote", 2);
                         break;
                     }
                 case 2:
                    {
                         reaction.text = "Am I supposed to be offended?";
-                        if(currentHealth+10<=maxHealth)
+                        anim.SetInteger("Emote", 2);
+                        if (currentHealth+10<=maxHealth)
                         {
                          currentHealth += 10;
                          hb.SetHealth(currentHealth);
@@ -82,6 +96,7 @@ public class Opponent : MonoBehaviour
                 case 3:
                     {
                     reaction.text = "That is just so rude!";
+                    anim.SetInteger("Emote", 3);
                     currentHealth -= 10;
                     hb.SetHealth(currentHealth);
                     break;
@@ -89,6 +104,7 @@ public class Opponent : MonoBehaviour
                 case 4:
                     {
                     reaction.text = "how dare you?!?!";
+                    anim.SetInteger("Emote", 4);
                     currentHealth -= 20;
                     hb.SetHealth(currentHealth);
                     break;
@@ -96,6 +112,7 @@ public class Opponent : MonoBehaviour
                  case 5:
                     {
                     reaction.text = "Have a little respect, would you?";
+                    anim.SetInteger("Emote", 3);
                     currentHealth -= 5;
                     hb.SetHealth(currentHealth);
                     break;
@@ -108,6 +125,11 @@ public class Opponent : MonoBehaviour
         yield return new WaitForSeconds(2f);
         reaction.text = null;
 
+        // Goes back to idle animation
+        anim.SetInteger("Emote", 1);
+
+        opponentBubble.SetActive(false);
+        
         // Resets all the word counters to zero
         nws.totalWordCount = 0;
         nws.nounCount = 0;
