@@ -895,6 +895,7 @@ MonoBehaviour:
   nounCount: 0
   adjCount: 0
   swearCount: 0
+  punctuationCount: 0
   totalWordCount: 0
   turnsCount: 0
 --- !u!4 &339860271
@@ -1375,6 +1376,10 @@ PrefabInstance:
     - target: {fileID: 8680144782432351961, guid: f843725c264e1c2419f75ce94041bcd5, type: 3}
       propertyPath: m_Name
       value: Button1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680144782432351961, guid: f843725c264e1c2419f75ce94041bcd5, type: 3}
+      propertyPath: m_TagString
+      value: Punctuation
       objectReference: {fileID: 0}
     - target: {fileID: 8680144782432351962, guid: f843725c264e1c2419f75ce94041bcd5, type: 3}
       propertyPath: m_Color.b

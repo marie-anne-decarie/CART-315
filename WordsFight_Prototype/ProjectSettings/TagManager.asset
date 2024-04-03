@@ -8,6 +8,7 @@ TagManager:
   - GreenButton
   - PurpleButton
   - SwearWord
+  - Punctuation
   layers:
   - Default
   - TransparentFX

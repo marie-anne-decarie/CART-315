@@ -66,10 +66,15 @@ public class Opponent : MonoBehaviour
             reaction.text = "Did you say something?";
             anim.SetInteger("Emote", 2);
         }
-        else if(nws.swearCount>=3)
+        else if(nws.swearCount>nws.nounCount+nws.adjCount || nws.swearCount>=3)
         {
             reaction.text = "Whoa there, watch your mouth!";
             anim.SetInteger("Emote", 3);
+        }
+        else if (nws.nounCount<1 || nws.punctuationCount<1)
+        {
+            reaction.text = "Learn some grammar, would you?";
+            anim.SetInteger("Emote", 2);
         }
         else
         {        
@@ -135,6 +140,7 @@ public class Opponent : MonoBehaviour
         nws.nounCount = 0;
         nws.adjCount = 0;
         nws.swearCount = 0;
+        nws.punctuationCount = 0;
        
         // Display new words for next turn
         nws.DisplayWords();

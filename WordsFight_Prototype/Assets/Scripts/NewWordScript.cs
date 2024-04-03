@@ -25,6 +25,7 @@ public class NewWordScript : MonoBehaviour
     public int nounCount = 0;
     public int adjCount = 0;
     public int swearCount = 0;
+    public int punctuationCount = 0;
     // Counts the total number of words and punctuation signs in each insult
     public int totalWordCount;
 
@@ -68,17 +69,20 @@ public class NewWordScript : MonoBehaviour
         if(wordChosen.gameObject.tag=="GreenButton") // green buttons = nouns
         {
             nounCount++;
-            Debug.Log("You clicked " + nounCount + " nouns.");
         }
         if(wordChosen.gameObject.tag=="PurpleButton") // purple buttons = adjectives
         {
             adjCount++; 
-            Debug.Log("You clicked " + adjCount + " adjectives.");
         }
         if(wordChosen.gameObject.tag=="SwearWord") 
         {
             swearCount++;
             Debug.Log("You cursed " + swearCount + " times! Damn!");
+        }
+        if (wordChosen.gameObject.tag == "Punctuation")
+        {
+            punctuationCount++;
+            Debug.Log("You punctuated. Swag.");
         }
 
     }
