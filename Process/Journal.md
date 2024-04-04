@@ -1,3 +1,13 @@
+# April 4th
+
+I was pretty busy with other classes these past few days, but I still managed to incorporate animation in my game as I wanted! It was a lot more simple than I expected. I animated an avatar with four different reactions that would play whenever the player lauches an attack.
+<br> I was more focused on the actual implementation of the animation into Unity than on the actual character design, so the current design is not particularly interesting. I find it hard to figure out what the opponent should look like in the game, since I want him or her to look like you'd wanna insult them, and that's a bit subjective (for me I guess that would just be some really, really annoying sexist white guy lol)
+<br> I thought that there could be a character customization element to the game where the player decided what the guy they're insulting will look like. Perhaps that way there could be a cathartic element where you can make him look like someone you hate or someone you find really frustrating, which I think is pretty funny.
+<br> Obviously I don't think I have time to implement the whole customization thing since there's only one week left, but I'll try to draw some concept art for it just to have an idea of what it could look like while focusing on perfecting the actual gameplay.
+<br><br> Current guy design: <br>
+![idle_01](https://github.com/marie-anne-decarie/CART-315/assets/157767089/9c9aefa9-92da-4048-857f-8e36f52d6e59)
+<br> <br> I don't know, I think he looks kinda goofy! It works for the prototype, my friend tried it this morning and she liked his reactions and facial expressions.
+
 # Week 10 - Recap
 
 I worked a lot on my prototype this week and I am very satisfied with where everything is headed. My goal was to (at last) have a fully playable prototype that I could test with other people without having to be like "it's supposed to do that here" or "aah yeah I'm not done coding this part". 
