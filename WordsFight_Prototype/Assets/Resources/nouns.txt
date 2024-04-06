@@ -22,7 +22,6 @@ penguin
 jerk
 vehicle
 meat
-magazine
 hullabaloo
 capybara
 kerfuffle
@@ -46,3 +45,13 @@ butt
 hippie
 lobster
 motherfucker
+napkin
+normie
+poser
+weirdo
+freak
+cucumber
+zucchini
+typo
+&*%$!!
+ukulele

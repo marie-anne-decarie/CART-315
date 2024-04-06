@@ -679,21 +679,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139272386}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8814c2059ce806418e5db7fc33c942f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  special_asset: {fileID: 0}
   nouns: []
   adj: []
+  special: []
   canvas: {fileID: 0}
   greenButtons: []
   purpleButtons: []
+  specialButton: {fileID: 0}
+  opp: {fileID: 0}
   allWords: []
   wordButtons: []
+  specialAttack: 0
   nounCount: 0
   adjCount: 0
   swearCount: 0
+  punctuationCount: 0
   totalWordCount: 0
   turnsCount: 0
 --- !u!1 &1618513880

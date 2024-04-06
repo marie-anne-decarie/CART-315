@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ButtonScript : MonoBehaviour
 {
     public Text speechBubble;
+
+    public NewWordScript nws;
     
     // Start is called before the first frame update
     void Start()
@@ -25,8 +27,12 @@ public class ButtonScript : MonoBehaviour
         speechBubble.text += (" " + thisWord);
     }
 
-    public void MysteryWord()
+    public void SpecialButton()
     {
-
+        int specialNumber = Random.Range(0, nws.special.Count);
+        string specialPhrase = nws.special[specialNumber];
+        speechBubble.text = specialPhrase;
+        nws.specialAttack = true;
     }
+
 }

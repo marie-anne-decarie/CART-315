@@ -9,17 +9,29 @@ using UnityEngine.SceneManagement;
 
 public class NewWordScript : MonoBehaviour
 {
+   // text assets
     private TextAsset nouns_asset;
     private TextAsset adj_asset;
+    public TextAsset special_asset;
+
+    // the lists to hold the different wordbanks (nouns, adjectives, and special phrases)
     public List<string> nouns = new List<string>();
-    public List<string> adj = new List<string>();
+    public List<string> adj = new List<string>(); 
+    public List<string> special = new List<string>();
 
     public GameObject canvas;
     public GameObject[] greenButtons;
     public GameObject[] purpleButtons;
 
+    public GameObject specialButton;
+    public Opponent opp;
+
     [SerializeField] Button[] allWords;
     public Button[] wordButtons;
+
+
+    // when true, allows the special attack to bypass the usual grammar rules
+    public bool specialAttack;
 
     // Keeps track of the number of nouns and adj. in each insult
     public int nounCount = 0;
@@ -32,10 +44,18 @@ public class NewWordScript : MonoBehaviour
     // Counts the number of turns it takes you to win
     public int turnsCount;
 
+   // how many points is the attack worth
+    public int attackWorth; // WIP
+
+    // To access the content of the speech bubble
+    public Text speechBubble; // WIP
+
     
     // Start is called before the first frame update
     void Start()
     {
+        specialButton.SetActive(false);
+
         LoadWordbank();
         DisplayWords();
         
@@ -50,7 +70,8 @@ public class NewWordScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-        if(adjCount>=3)
+
+        if (adjCount>=3)
         {
             DeactivateAdj();
         }
@@ -59,6 +80,11 @@ public class NewWordScript : MonoBehaviour
             DeactivateNouns();
             DeactivateAdj();
         }
+        if(opp.hitsStreak>=2)
+        {
+            specialButton.SetActive(true);
+        }
+
     }
 
    
@@ -77,12 +103,10 @@ public class NewWordScript : MonoBehaviour
         if(wordChosen.gameObject.tag=="SwearWord") 
         {
             swearCount++;
-            Debug.Log("You cursed " + swearCount + " times! Damn!");
         }
         if (wordChosen.gameObject.tag == "Punctuation")
         {
             punctuationCount++;
-            Debug.Log("You punctuated. Swag.");
         }
 
     }
@@ -119,6 +143,13 @@ public class NewWordScript : MonoBehaviour
         {
             adj.Add(adjList[i]);
         }
+        special_asset = Resources.Load("specials") as TextAsset;
+        string[] specialList = special_asset.text.Split('\n');
+        for (int i = 0; i < specialList.Length; i++)
+        {
+            special.Add(specialList[i]);
+        }
+
     }
 
     public void ClearWords() // clears all the nouns and ajectives and replaces them with dot dot dot
@@ -191,4 +222,22 @@ public class NewWordScript : MonoBehaviour
             }
         }
     }
+
+    public void DeactivateSpecialButton()
+    {
+        opp.hitsStreak = 0;
+        specialButton.SetActive(false);
+        DeactivateAdj();
+        DeactivateNouns();
+    }
+
+    // WIP
+    void CalculateAttackWorth()
+    {
+        if (adjCount == 0) attackWorth = 5;
+
+
+    }
+
+
 }

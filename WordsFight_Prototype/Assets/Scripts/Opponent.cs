@@ -17,6 +17,9 @@ public class Opponent : MonoBehaviour
     public Animator anim;
 
     public GameObject opponentBubble;
+
+   // Keeps track of how many times you made the opponent lose points in a row
+    public int hitsStreak = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -61,19 +64,32 @@ public class Opponent : MonoBehaviour
         // A random reaction is triggered
         int randReaction = Random.Range(1, 5);
         
+       // if you didn't write anything and just attacked, you get this message
         if(nws.totalWordCount==0)
         {
             reaction.text = "Did you say something?";
+            hitsStreak = 0;
             anim.SetInteger("Emote", 2);
         }
+        // if you use the swear word option with a bit too much enthusiasm:
         else if(nws.swearCount>nws.nounCount+nws.adjCount || nws.swearCount>=3)
         {
             reaction.text = "Whoa there, watch your mouth!";
+            hitsStreak = 0;
             anim.SetInteger("Emote", 3);
         }
-        else if (nws.nounCount<1 || nws.punctuationCount<1)
+        else if(nws.specialAttack)
+        {
+            reaction.text = "What the hell dude?!?!?!";
+            anim.SetInteger("Emote", 4);
+            currentHealth -= 25;
+            hitsStreak++;
+            hb.SetHealth(currentHealth);
+        }
+        else if ((nws.nounCount<1 || nws.punctuationCount<1))
         {
             reaction.text = "Learn some grammar, would you?";
+            hitsStreak = 0;
             anim.SetInteger("Emote", 2);
         }
         else
@@ -83,12 +99,14 @@ public class Opponent : MonoBehaviour
                 case 1:
                     {
                         reaction.text = "You done talking?";
+                        hitsStreak = 0;
                         anim.SetInteger("Emote", 2);
                         break;
                     }
                 case 2:
                    {
                         reaction.text = "Am I supposed to be offended?";
+                        hitsStreak = 0;
                         anim.SetInteger("Emote", 2);
                         if (currentHealth+10<=maxHealth)
                         {
@@ -101,6 +119,7 @@ public class Opponent : MonoBehaviour
                 case 3:
                     {
                     reaction.text = "That is just so rude!";
+                    hitsStreak++;
                     anim.SetInteger("Emote", 3);
                     currentHealth -= 10;
                     hb.SetHealth(currentHealth);
@@ -109,6 +128,7 @@ public class Opponent : MonoBehaviour
                 case 4:
                     {
                     reaction.text = "how dare you?!?!";
+                    hitsStreak++;
                     anim.SetInteger("Emote", 4);
                     currentHealth -= 20;
                     hb.SetHealth(currentHealth);
@@ -117,6 +137,7 @@ public class Opponent : MonoBehaviour
                  case 5:
                     {
                     reaction.text = "Have a little respect, would you?";
+                        hitsStreak = 0;
                     anim.SetInteger("Emote", 3);
                     currentHealth -= 5;
                     hb.SetHealth(currentHealth);
@@ -125,6 +146,8 @@ public class Opponent : MonoBehaviour
             }
         
         }
+
+        Debug.Log("Your current streak is " + hitsStreak + " hits");
 
         // The reaction text stays for 2 seconds
         yield return new WaitForSeconds(2f);
@@ -141,6 +164,9 @@ public class Opponent : MonoBehaviour
         nws.adjCount = 0;
         nws.swearCount = 0;
         nws.punctuationCount = 0;
+
+        // Reset the special attack
+        nws.specialAttack = false;
        
         // Display new words for next turn
         nws.DisplayWords();
@@ -149,5 +175,10 @@ public class Opponent : MonoBehaviour
         nws.ButtonsOn();
 
         yield return null;
+    }
+
+    public void ResetStreak()
+    {
+        hitsStreak = 0;
     }
 }
