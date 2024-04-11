@@ -1,7 +1,41 @@
+# Last week!
+
+I got a lot of things done today since the presentation is tomorrow and I wanted to make sure I had at least answered all my questions from last time.
+
+First, a few days ago I implemented the mysterious ??? button of my game. I really struggled to settle on what it would do, but I ended up making it display a random special phrase from a separate bank when it's clicked. I didn't want it to be accessible at all time, so I made it so it would only appear everytime the player makes 2 successful attacks in a row. 
+
+Some other small changes I made are:
+- I finetuned the main menu
+- I added a ? icon in the main scene which you can click on if you're stuck and need to read the instructions again. A lot of my friends who tested the game were getting frustrated because their attacks didn't work, so I thought that adding this simple feature would help players when that happened!
+
+<br> And of course, the big thing I wanted to figure out before the presentation was the opponent's behavior. So far, the reactions were completely random, and it would get quite frustrating because the effort put into the attacks never really payed off, the enemy could lose a lot of health with just one word or very little with a super hilarious insult.
+<br> I procrastinated a bit on this aspect because it felt really intimidating, but today I finally decided to tackle it (and also, time's running out lol). 
+<br> I started by writing down the different possibilities for each attack and do a really simplified flow chart. Basically, if the attack consists of nothing, if it has too many cursewords or if it's syntactically incorrect, then it is invalid and the opponent doesn't lose any health. However, if you used the special attack, grammar doesn't apply, and you automatically hit. Then, if the attack is neither invalid nor special, it means there are two possibilities: you either hit or miss.
+<br> So then I had to determine what would make you hit or miss. I know I still wanted a bit of randomness, but also I wanted to give the player some control. I chose three elements that would make an attack more powerful:
+- The use of really long words (like 10 letters or more)
+- More words = more points
+- Alliteration, ie when each word starts with the same letter (this was actually suggested by someone during last week's playtests:))
+
+My silly ballpoint pen notes as always: <br>
+![434858906_3296674700638058_1223085251646435332_n](https://github.com/marie-anne-decarie/CART-315/assets/157767089/58b5d098-7c16-4d38-8671-6fc994d28305)
+
+
+I established a points system where you would get a certain number of points for each attack based on those three conditions, and then the more points you have, the more likely your attack is to hit (but not always!)
+
+Another question I wanted to work on was how do you lose this game? I did something pretty simple, basically if you miss too many attacks in a row or don't respect grammar, the opponent makes fun of you and you lose.
+
+Another suggestion I got last week was to have the opponent fight back. What I did is I made two new text resources with a bunch of counter-attacks in them, one for when you hit the opponent, and one for when you miss. The "hit" reactions express how offended he is, while the "miss" ones have witty comebacks and him making fun of the player.
+
+I still have a few details I want to finetune, but I'm really satisfied with where my game is right now. I still think I could work a bit more on art, which I'll try to do before the presentation tomorrow. I had two big animation projects to finish/work on this week and so I kind of neglected the artistic aspect of my game, even though I wanted to work on it. I want to make a final look-and-feel prototype to show really how the interface would look like once the game is finished, and also the different avatars the player could fight against. Another suggestion I got was to make multiple choices of opponent, and I think that a great compromise between having just 1 avatar and a full customization feature. So, I'll try to design a few character concepts for the pitch.
+
+Speaking of which, I started preparing my pitch already, but I will finish it tomorrow once I have all the art and the concepts I want to present.
+
+I think that's everything for now!:-]
+
 # April 4th
 
 I was pretty busy with other classes these past few days, but I still managed to incorporate animation in my game as I wanted! It was a lot more simple than I expected. I animated an avatar with four different reactions that would play whenever the player lauches an attack.
-<br> I was more focused on the actual implementation of the animation into Unity than on the actual character design, so the current design is not particularly interesting. I find it hard to figure out what the opponent should look like in the game, since I want him or her to look like you'd wanna insult them, and that's a bit subjective (for me I guess that would just be some really, really annoying sexist white guy lol)
+<br> I was more focused on the actual implementation of the animation into Unity than on the character design, so the current design is not particularly interesting. I find it hard to figure out what the opponent should look like in the game, since I want him or her to look like you'd wanna insult them, and that's a bit subjective (for me I guess that would just be some really, really annoying sexist white guy lol)
 <br> I thought that there could be a character customization element to the game where the player decided what the guy they're insulting will look like. Perhaps that way there could be a cathartic element where you can make him look like someone you hate or someone you find really frustrating, which I think is pretty funny.
 <br> Obviously I don't think I have time to implement the whole customization thing since there's only one week left, but I'll try to draw some concept art for it just to have an idea of what it could look like while focusing on perfecting the actual gameplay.
 <br><br> Current guy design: <br>
