@@ -20,7 +20,16 @@ public class Opponent : MonoBehaviour
 
    // Keeps track of how many times you made the opponent lose points in a row
     public int hitsStreak = 0;
-    
+
+    public TextAsset hitReactions_asset;
+    public TextAsset missReactions_asset;
+
+    public List<string> hitReactions = new List<string>();
+    public List<string> missReactions = new List<string>();
+
+    private int defense;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +38,8 @@ public class Opponent : MonoBehaviour
 
         reaction.text = null;
         opponentBubble.SetActive(false);
+
+        LoadReactions();
     }
 
     // Update is called once per frame
@@ -41,12 +52,18 @@ public class Opponent : MonoBehaviour
                 SceneManager.LoadScene("GameOver");
             }
 
+        if(nws.turnsCount>5 && currentHealth==100)
+        {
+            currentHealth = 99;
+            SceneManager.LoadScene("GameOverB");
+        }
 
 
     }
 
     public void React() // function that triggers the opponent's reaction
     {
+        nws.CalculateAttackWorth();
         StartCoroutine(Reaction());
     }
 
@@ -57,15 +74,22 @@ public class Opponent : MonoBehaviour
 
         // Adds this turn to the counter
         nws.turnsCount++;
-        Debug.Log("You just finished round " + nws.turnsCount);
+        // Debug.Log("You just finished round " + nws.turnsCount);
 
         opponentBubble.SetActive(true);
         
-        // A random reaction is triggered
-        int randReaction = Random.Range(1, 5);
         
-       // if you didn't write anything and just attacked, you get this message
-        if(nws.totalWordCount==0)
+        // the special ??? attack triggers a special reaction: 
+        if(nws.specialAttack)
+         {
+            reaction.text = "What the hell dude?!?!?!";
+            anim.SetInteger("Emote", 4);
+            currentHealth -= 25;
+            hb.SetHealth(currentHealth);
+         }
+
+        // if you didn't write anything and just attacked, you get this message
+        else if(nws.totalWordCount==0)
         {
             reaction.text = "Did you say something?";
             hitsStreak = 0;
@@ -77,79 +101,55 @@ public class Opponent : MonoBehaviour
             reaction.text = "Whoa there, watch your mouth!";
             hitsStreak = 0;
             anim.SetInteger("Emote", 3);
+            if (currentHealth + 10 <= maxHealth)
+            {
+                currentHealth += 10;
+                hb.SetHealth(currentHealth);
+            }
+            else
+            {
+                currentHealth = 100;
+                hb.SetHealth(currentHealth);
+            }
         }
-        else if(nws.specialAttack)
-        {
-            reaction.text = "What the hell dude?!?!?!";
-            anim.SetInteger("Emote", 4);
-            currentHealth -= 25;
-            hitsStreak++;
-            hb.SetHealth(currentHealth);
-        }
+
+        // if you don't put any punctuation or forget to insert a noun
         else if ((nws.nounCount<1 || nws.punctuationCount<1))
         {
             reaction.text = "Learn some grammar, would you?";
             hitsStreak = 0;
             anim.SetInteger("Emote", 2);
-        }
-        else
-        {        
-            switch (randReaction)
+            if (currentHealth + 5 <= maxHealth)
             {
-                case 1:
-                    {
-                        reaction.text = "You done talking?";
-                        hitsStreak = 0;
-                        anim.SetInteger("Emote", 2);
-                        break;
-                    }
-                case 2:
-                   {
-                        reaction.text = "Am I supposed to be offended?";
-                        hitsStreak = 0;
-                        anim.SetInteger("Emote", 2);
-                        if (currentHealth+10<=maxHealth)
-                        {
-                         currentHealth += 10;
-                         hb.SetHealth(currentHealth);
+                currentHealth += 5;
+                hb.SetHealth(currentHealth);
+            }
+            else
+            {
+                currentHealth = 100;
+                hb.SetHealth(currentHealth);
+            }
+        }
+        
+        // now if none of those previous conditions apply, you get a reaction adapted to your attack's worth:
+        else
+        {
+            defense = Random.Range(1, 50); // The higher your score, the more chance you get to hurt the opponent
 
-                         }                   
-                        break;
-                    }
-                case 3:
-                    {
-                    reaction.text = "That is just so rude!";
-                    hitsStreak++;
-                    anim.SetInteger("Emote", 3);
-                    currentHealth -= 10;
-                    hb.SetHealth(currentHealth);
-                    break;
-                    }
-                case 4:
-                    {
-                    reaction.text = "how dare you?!?!";
-                    hitsStreak++;
-                    anim.SetInteger("Emote", 4);
-                    currentHealth -= 20;
-                    hb.SetHealth(currentHealth);
-                    break;
-                    }
-                 case 5:
-                    {
-                    reaction.text = "Have a little respect, would you?";
-                        hitsStreak = 0;
-                    anim.SetInteger("Emote", 3);
-                    currentHealth -= 5;
-                    hb.SetHealth(currentHealth);
-                    break;
-                    }
+            if(nws.attackWorth>defense)
+            {
+                Hit(); 
+            }
+            else
+            {
+                Miss();
             }
         
+        
         }
-
-        Debug.Log("Your current streak is " + hitsStreak + " hits");
-
-        // The reaction text stays for 2 seconds
+        
+        
+       // The reaction text stays for 2 seconds
         yield return new WaitForSeconds(2f);
         reaction.text = null;
 
@@ -167,6 +167,9 @@ public class Opponent : MonoBehaviour
 
         // Reset the special attack
         nws.specialAttack = false;
+
+        // Resets the attack count
+        nws.attackWorth = 0;
        
         // Display new words for next turn
         nws.DisplayWords();
@@ -180,5 +183,49 @@ public class Opponent : MonoBehaviour
     public void ResetStreak()
     {
         hitsStreak = 0;
+    }
+
+    public void Hit()
+    {
+        int randReaction = Random.Range(0, hitReactions.Count);
+        reaction.text = hitReactions[randReaction];
+        anim.SetInteger("Emote", 3);
+        currentHealth -= (nws.attackWorth - defense);
+        hb.SetHealth(currentHealth);
+        hitsStreak++;
+    }
+
+    public void Miss()
+    {
+        int randReaction = Random.Range(0, missReactions.Count);
+        reaction.text = missReactions[randReaction];
+        anim.SetInteger("Emote", 2);
+        if((currentHealth+(defense - nws.attackWorth)<=100))      
+        {
+            currentHealth += (defense - nws.attackWorth);
+        }
+        else
+        {
+            currentHealth = 100;
+        }
+       hb.SetHealth(currentHealth);
+    }
+
+    void LoadReactions() // loads the possible reactions from the opponent
+    {
+        hitReactions_asset = Resources.Load("hitReactions") as TextAsset;
+        string[] hitReactionsList = hitReactions_asset.text.Split('\n');
+        for (int i = 0; i < hitReactionsList.Length; i++)
+        {
+            hitReactions.Add(hitReactionsList[i]);
+        }
+        missReactions_asset = Resources.Load("missReactions") as TextAsset;
+        string[] missReactionsList = missReactions_asset.text.Split('\n');
+        for (int i = 0; i < missReactionsList.Length; i++)
+        {
+            missReactions.Add(missReactionsList[i]);
+        }
+
+
     }
 }

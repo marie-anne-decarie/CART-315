@@ -29,6 +29,9 @@ public class NewWordScript : MonoBehaviour
     [SerializeField] Button[] allWords;
     public Button[] wordButtons;
 
+    // The maximum amount of adjectives allowed. It will become bigger the better you are at the game
+    public int maxAdj = 2;
+
 
     // when true, allows the special attack to bypass the usual grammar rules
     public bool specialAttack;
@@ -38,8 +41,12 @@ public class NewWordScript : MonoBehaviour
     public int adjCount = 0;
     public int swearCount = 0;
     public int punctuationCount = 0;
+    public bool alliteration;
     // Counts the total number of words and punctuation signs in each insult
     public int totalWordCount;
+    
+    // Collects all the words selected for the current insult/attack
+    public List<string> currentInsult = new List<string>();
 
     // Counts the number of turns it takes you to win
     public int turnsCount;
@@ -71,7 +78,7 @@ public class NewWordScript : MonoBehaviour
     void Update()
     {        
 
-        if (adjCount>=3)
+        if (adjCount>=maxAdj)
         {
             DeactivateAdj();
         }
@@ -85,24 +92,40 @@ public class NewWordScript : MonoBehaviour
             specialButton.SetActive(true);
         }
 
+
     }
 
    
     void TaskOnClick(Button wordChosen) // This function keeps track of how many words have been selected each turn
     {
-        totalWordCount++;
+        
         
         if(wordChosen.gameObject.tag=="GreenButton") // green buttons = nouns
         {
             nounCount++;
+            if ((wordChosen.gameObject.GetComponentInChildren<Text>().text.Length)-1 >= 10) attackWorth += 5;
+
+            
+            currentInsult.Add(wordChosen.gameObject.GetComponentInChildren<Text>().text);
+
+            
+            totalWordCount++;
         }
         if(wordChosen.gameObject.tag=="PurpleButton") // purple buttons = adjectives
         {
-            adjCount++; 
+            adjCount++;
+            if ((wordChosen.gameObject.GetComponentInChildren<Text>().text.Length)-1 >= 10) attackWorth += 5;
+
+
+            currentInsult.Add(wordChosen.gameObject.GetComponentInChildren<Text>().text);
+
+            
+            totalWordCount++;
         }
         if(wordChosen.gameObject.tag=="SwearWord") 
         {
             swearCount++;
+            totalWordCount++;
         }
         if (wordChosen.gameObject.tag == "Punctuation")
         {
@@ -231,11 +254,40 @@ public class NewWordScript : MonoBehaviour
         DeactivateNouns();
     }
 
-    // WIP
-    void CalculateAttackWorth()
+    
+    public void CalculateAttackWorth()
     {
-        if (adjCount == 0) attackWorth = 5;
+        attackWorth += (5 * totalWordCount);
+        if(totalWordCount>1)
+        {
+              AlliterationCheck();
+        }
 
+        if(attackWorth>50 && maxAdj<=5)
+        {
+            maxAdj++;
+        }
+
+        Debug.Log("The current attack is worth " + attackWorth + " points");
+
+    }
+
+    void AlliterationCheck()
+    {
+        alliteration = true;
+        
+        for(int i=1; i<currentInsult.Count; i++)
+        {
+            if (currentInsult[0].Substring(0,1) != currentInsult[i].Substring(0,1))
+            {
+                alliteration = false;
+            }
+        }
+
+        if (alliteration) attackWorth += (10*totalWordCount);
+
+
+        currentInsult.Clear();
 
     }
 
