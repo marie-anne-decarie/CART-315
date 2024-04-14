@@ -1,3 +1,32 @@
+# Reflecting on the semester
+April 14th
+
+A few days ago, we did the presentations in class for our final prototype. I was pretty nervous for mine but it went really well and I got super insightful feedback!
+
+One point that I got that I fully agree with is that my game doesn't quite fit the "fighting game" label that I gave it in the beginning. It was going to be a 2-players street-fighter type game but with words as the weapons/attack moves, but because of how it evolved, it doesn't really match that trope anymore. The person who made the comment suggested it could be considered a puzzle game, but I more or less agree because yes there is a bit of strategy required to craft the perfect insult, but there is also a lot of randomness/fake subjectivity involved and so there's not really one solution that will 100% work against the opponent. Maybe it's a mashup between fighting and puzzle? I think I need to give it a bit more thought.
+
+I wanted to include a "future directions" slide in my pitch, but I ended up forgetting about it, so I'll do it here and now:
+Things I would have to think about/implement if/when I continue working on this game in the future:
+- Implement the various avatar choices; or, a more advanced option, implement a customization feature for the opponent's look
+- AND have the different characters react differently to the insults, i.e. some are easier to offend than others, or they're offended by specific things
+- Long term goal: I really do think that the use of some kind of AI to control the opponent's reactions is the ultimate direction this game should take. I actually looked it up during the semester, but the information I found was either too complicated or required me to pay for third-party stuff - perhaps there was a more simple way to implement it, but I didn't find anything about it. And since I know virtually nothing about how artificial intelligence actually works as of now, I thought that it would be better to leave that for later and focus on other aspects of the game for this class. However, I really think that using AI-generated responses from the characters would make for funnier and more dynamic interactions during the player and the opponent. I'll continue looking into that!
+- Finally, I'd like to refine the visuals (specifically the opening screen and the game over screens) a little, although I'm pretty satisfied with how they already are
+- And I can put the game on itch.io so more people can try it out:)
+
+**A bit of reflecting on the prototyping process?**
+
+I'm gonna be honest, it started out pretty rough. I got excited with my idea in the beginning but then when it came to coding, I spent weeks just making the most basic basic implementation prototype on Unity. Looking back, maybe I could have started with a type of prototype that's closer to the skills I already have, like look/feel, so that I would have had something to share in class earlier. But at the same time, I wanted to take this class because I wanted to learn new coding skills, so I'm glad I didn't shy away from Unity and jumped into it as early as I could, even if it was really difficult and took many weeks before I actually got something that was playable/testable. 
+
+I would say after week 10, the programming went much more smoothly and that's when I really started to feel like I was able to improve my prototype. I often didn't have a lot of time in class to test my game, but I made many of my friends try it in-between classes and each time they would give me feedback, I would take note of it and implement the suggested features into my game.
+
+I still feel like because my programming skills are very new and I'm still a bit slow at figuring things out, I didn't get to make a lot of versions of my game and mostly just added/removed elements from the main version as new ideas came. I think if we had only 1-2 more weeks I could have really dived into more experimentation and variations. 
+
+Overall though, I am super happy with what I managed to do for the final submission, especially since until week 9, I felt super discouraged and thought I wouldn't even be able to make something playable at all. I feel like I learned so many things about Unity, game design, and prototyping, and I feel much more confident. I will definitely continue learning and making games in the future. I am a game designer:]
+
+My final thoughts on this class: I think it was great! My goal with it was to learn how to make games and to improve my programming skills, and I achived both so! Hurray! It was also the jumpstart I needed since I always wanted to know how to make games but never seriously looked into it. Also, even though I only used it for one week, I loved discovering about Bitsy and it's really something I want to use again in the future.
+
+And that concludes this journal! :-]
+
 # Last week!
 
 I got a lot of things done today since the presentation is tomorrow and I wanted to make sure I had at least answered all my questions from last time.
